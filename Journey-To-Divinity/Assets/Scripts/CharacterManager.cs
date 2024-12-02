@@ -1,4 +1,3 @@
-//Parth Talwar                                                                                                                                                                                                                  ID: 2220145
 
 using System.Collections;
 using System.Collections.Generic;
@@ -377,7 +376,9 @@ public class CharacterManager : MonoBehaviour
     {
         if (controlEnable == true)
         {
+
             isAttacking = false;
+
             if (!isAttacking)
             {
                 //If player is not crouching, allow for player movement
@@ -385,7 +386,6 @@ public class CharacterManager : MonoBehaviour
                 {
                     horizontalMovement = Input.GetAxisRaw("Horizontal") * moveSpeed;
                 }
-				
 
 				anim.SetFloat("Speed", Mathf.Abs(horizontalMovement));
 
@@ -438,7 +438,7 @@ public class CharacterManager : MonoBehaviour
 				if (Time.time >= nextAttackingTime)
 				{
                     //Make player attack if pressing z
-					if (Input.GetKeyDown("z"))
+					if (!crouch && Input.GetKeyDown("z"))
 					{
 						if (Time.time - previousAttackTime >= attackCooldown)
 						{
@@ -463,7 +463,7 @@ public class CharacterManager : MonoBehaviour
 									attackStage = 1;
 								}
                                 isAttacking = true;
-								string attackAnimationName = "CharacterAttack" + attackStage;
+                                string attackAnimationName = "CharacterAttack" + attackStage;
 								anim.Play(attackAnimationName);
                                 audioSource.PlayOneShot(clip2, volume = 1.2f);
 
@@ -543,13 +543,9 @@ public class CharacterManager : MonoBehaviour
 					}
 				}
 			}
-
-            else 
-            {
-                horizontalMovement = 0f;    
-            }
         }
     }
+
 
     //Task to draw gizmos for both the attacking and plunging attacking points
     void OnDrawGizmosSelected()
