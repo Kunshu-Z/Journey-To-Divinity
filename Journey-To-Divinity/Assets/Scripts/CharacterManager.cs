@@ -503,6 +503,9 @@ public class CharacterManager : MonoBehaviour
                 //Task to make player perform plunging attack
                 void AttackInAir()
                 {
+                    //Adding a downward force as the character is plunging 
+                    rb2.velocity = new Vector2(rb2.velocity.x, -Mathf.Abs(moveSpeed * 0.8f));
+
                     Collider2D[] hittingEnemies = Physics2D.OverlapCircleAll(plungingAttackingPoint.position, attackingRange, enemyLayers);
 
                     foreach (Collider2D enemyCollider in hittingEnemies)
