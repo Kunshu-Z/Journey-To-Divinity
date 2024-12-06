@@ -19,6 +19,7 @@ public class CharacterManager : MonoBehaviour
     public GameObject LevelDefeatText;
     public GameObject LevelCompleteText;
     public GameObject Healthbar;
+    public GameObject Blockbar;
     public GameObject PauseBtn;
     public GameObject MuteBtn;
     public GameObject PlayBtn;
@@ -41,6 +42,7 @@ public class CharacterManager : MonoBehaviour
     public AudioClip clip5;
     public CharacterController2D controller;
     public Slider healthSlider;
+    public Slider blockSlider;
     public float moveSpeed = 40f;
     public float volume = 0.5f;
     public Transform attackingPoint;
@@ -51,8 +53,12 @@ public class CharacterManager : MonoBehaviour
     public float attackingRate = 2f;
     public float durationBeforeIdle = 5f; 
     public int maxHealth = 100;
+    public int maxBlock = 100;
     public int currentHealth;
+    public int currentBlock;
     public bool healthFull;
+    public bool blockFull;
+    public bool blockActive;
     public LayerMask enemyLayers;
     public Button PauseButton;
     public Button PlayButton;
@@ -94,11 +100,12 @@ public class CharacterManager : MonoBehaviour
         CharacterSprite = Character.GetComponent<SpriteRenderer>();
         anim = Character.GetComponent<Animator>();
         rb2 = Character.GetComponent<Rigidbody2D>();
-        //To prevent the player from modifying the health slider
+        //To prevent the player from modifying the health and block sliders
         healthSlider.interactable = false;
+        blockSlider.interactable = false;
         timeSinceLastMovement = 0f;
         UpdateHealth();
-
+        UpdateBlock();  
 
         //Pause button code
         Button Pause = PauseButton.GetComponent<Button>();
@@ -243,6 +250,13 @@ public class CharacterManager : MonoBehaviour
         healthSlider.value = healthValue;
     }
 
+    //Task to update the player's block bar
+    public void UpdateBlock()
+    {
+        float blockValue = (float)currentBlock / maxBlock;
+        blockSlider.value = blockValue;
+    }
+
     //Task to make objects with collision colliders function
     private void OnCollisionEnter2D(Collision2D hit)
     {
@@ -357,7 +371,12 @@ public class CharacterManager : MonoBehaviour
             anim.Play(blockAnimationName);
             audioSource.PlayOneShot(clip2, volume = 1.2f);
             blockStage++;
+            currentBlock -= damage; //Reduce the block bar
+            UpdateBlock();
+            blockFull = false;
             return;
+
+           
         }
 
         //Else, make the player take damage
