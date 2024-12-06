@@ -363,20 +363,31 @@ public class CharacterManager : MonoBehaviour
         //If the player is crouching, deflect the enemy's attack and deplete no health
         if (crouch)
         {
+            if (currentBlock > 0)
+            {
+                string blockAnimationName = "CharacterBlock" + blockStage;
+                anim.Play(blockAnimationName);
+                audioSource.PlayOneShot(clip2, volume = 1.2f);
+                blockStage++;
+                currentBlock -= damage; //Reduce the block bar
+                UpdateBlock();
+                blockFull = false;
+                return;
+            }
+
             if (blockStage == 2)
             {
                 blockStage = 1;
             }
-            string blockAnimationName = "CharacterBlock" + blockStage;
-            anim.Play(blockAnimationName);
-            audioSource.PlayOneShot(clip2, volume = 1.2f);
-            blockStage++;
-            currentBlock -= damage; //Reduce the block bar
-            UpdateBlock();
-            blockFull = false;
-            return;
 
-           
+            else
+            {
+                currentHealth -= damage;
+                UpdateHealth();
+                healthFull = false;
+                audioSource.PlayOneShot(clip5, volume = 10.0f);
+                anim.Play("CharacterHurt");
+            }
         }
 
         //Else, make the player take damage
