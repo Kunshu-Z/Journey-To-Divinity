@@ -76,6 +76,7 @@ public class CharacterManager : MonoBehaviour
     private Vector2 currentPosition;
     private Vector2 cameraPosition;
     private Rigidbody2D rb2;
+    private int blockBarIncrement = 10; //Increase the value of the block bar by 10
     private float horizontalMovement = 0f;
     private float nextAttackingTime = 0;
     private int attackStage = 1;
@@ -105,7 +106,10 @@ public class CharacterManager : MonoBehaviour
         blockSlider.interactable = false;
         timeSinceLastMovement = 0f;
         UpdateHealth();
-        UpdateBlock();  
+        UpdateBlock();
+
+        //Wait for 10 seconds before 10 to the block bar
+        StartCoroutine(AddBlock());
 
         //Pause button code
         Button Pause = PauseButton.GetComponent<Button>();
@@ -250,6 +254,25 @@ public class CharacterManager : MonoBehaviour
         healthSlider.value = healthValue;
     }
 
+    IEnumerator AddBlock()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5);
+
+            if(currentBlock < maxBlock)
+            {
+                currentBlock += blockBarIncrement;
+
+                if(currentBlock > maxBlock)
+                {
+                    currentBlock = maxBlock;
+                }
+                UpdateBlock();
+            }
+        }
+    }
+
     //Task to update the player's block bar
     public void UpdateBlock()
     {
@@ -363,6 +386,11 @@ public class CharacterManager : MonoBehaviour
         //If the player is crouching, deflect the enemy's attack and deplete no health
         if (crouch)
         {
+            if (blockStage == 2)
+            {
+                blockStage = 1;
+            }
+
             if (currentBlock > 0)
             {
                 string blockAnimationName = "CharacterBlock" + blockStage;
@@ -375,11 +403,7 @@ public class CharacterManager : MonoBehaviour
                 return;
             }
 
-            if (blockStage == 2)
-            {
-                blockStage = 1;
-            }
-
+            //Else statement to make the player take damage if the block bar has been depleted
             else
             {
                 currentHealth -= damage;
@@ -390,7 +414,7 @@ public class CharacterManager : MonoBehaviour
             }
         }
 
-        //Else, make the player take damage
+        //Else, make the player take damage if the player is not crouching
         else
         {
             currentHealth -= damage;
