@@ -30,6 +30,7 @@ public class CharacterManager : MonoBehaviour
     public GameObject HealthIcon;
     public GameObject HealthIcon2;
     public GameObject HealthIcon3;
+    public GameObject CrimsonShard;
     public SpriteRenderer CharacterSprite;
     public Animator anim;
     public BoxCollider2D topCollider;
@@ -43,6 +44,7 @@ public class CharacterManager : MonoBehaviour
     public CharacterController2D controller;
     public Slider healthSlider;
     public Slider blockSlider;
+    public Slider CrimsonSlider;
     public float moveSpeed = 40f;
     public float volume = 0.5f;
     public Transform attackingPoint;
@@ -54,8 +56,10 @@ public class CharacterManager : MonoBehaviour
     public float durationBeforeIdle = 5f; 
     public int maxHealth = 100;
     public int maxBlock = 100;
+    public int MaxCrimson = 100;
     public int currentHealth;
     public int currentBlock;
+    public int CurrentCrimson;
     public bool healthFull;
     public bool blockFull;
     public bool blockActive;
@@ -107,6 +111,7 @@ public class CharacterManager : MonoBehaviour
         timeSinceLastMovement = 0f;
         UpdateHealth();
         UpdateBlock();
+        CurrentCrimson = MaxCrimson; //Setting Crimson to max for testing
 
         //Wait for 10 seconds before 10 to the block bar
         StartCoroutine(AddBlock());
@@ -437,6 +442,12 @@ public class CharacterManager : MonoBehaviour
         {
 
             isAttacking = false;
+
+            if(Input.GetKeyDown("x"))
+            {
+                anim.Play("CharacterHeal");
+                moveSpeed = 140;
+            }
 
             if (!isAttacking)
             {

@@ -2922,6 +2922,7 @@ MonoBehaviour:
   HealthIcon: {fileID: 0}
   HealthIcon2: {fileID: 0}
   HealthIcon3: {fileID: 0}
+  CrimsonShard: {fileID: 0}
   CharacterSprite: {fileID: 1448479700}
   anim: {fileID: 1448479702}
   topCollider: {fileID: 1448479709}
@@ -2935,6 +2936,7 @@ MonoBehaviour:
   controller: {fileID: 1448479707}
   healthSlider: {fileID: 293217904}
   blockSlider: {fileID: 751478716}
+  CrimsonSlider: {fileID: 0}
   moveSpeed: 70
   volume: 0.5
   attackingPoint: {fileID: 1725316511}
@@ -2946,8 +2948,10 @@ MonoBehaviour:
   durationBeforeIdle: 30
   maxHealth: 100
   maxBlock: 100
+  MaxCrimson: 100
   currentHealth: 100
   currentBlock: 100
+  CurrentCrimson: 0
   healthFull: 1
   blockFull: 1
   blockActive: 0
