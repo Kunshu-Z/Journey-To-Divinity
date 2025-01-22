@@ -347,6 +347,11 @@ public class CharacterManager : MonoBehaviour
             UpdateHealth();
             anim.Play("CharacterHurt");
 		}
+
+        if(hit.gameObject.tag == "CrimsonShard")
+        {
+            //Adding code for crimson shard functionality
+        }
     }
 
     //Task to make objects with trigger colliders function
