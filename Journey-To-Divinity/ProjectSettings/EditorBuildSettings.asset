@@ -42,13 +42,13 @@ EditorBuildSettings:
     path: Assets/Scenes/DialogueFour.unity
     guid: 226f134c0745c23438403e4e232d190c
   - enabled: 1
-    path: Assets/Scenes/FinalLevel.unity
+    path: Assets/Scenes/LevelFive.unity
     guid: 7dfc6e2a19c52ce47a2281083ead077a
   - enabled: 1
-    path: Assets/Scenes/ResFinalLevel.unity
+    path: Assets/Scenes/ResLevelFive.unity
     guid: ffee380bc53d45d43b165a7ea1dc85f2
   - enabled: 1
-    path: Assets/Scenes/DialogueFinal.unity
+    path: Assets/Scenes/DialogueFive.unity
     guid: 9c5c8653f31ec434fa1b50ebf9aa9cd8
   - enabled: 1
     path: Assets/Scenes/EndScene.unity
@@ -57,3 +57,4 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
+  m_UseUCBPForAssetBundles: 0
