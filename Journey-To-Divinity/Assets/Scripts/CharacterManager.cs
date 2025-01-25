@@ -71,7 +71,7 @@ public class CharacterManager : MonoBehaviour
     public string RestartGame;
     public string StartScene;
     public string NextLevel;
-    public Meter meter; //To reference the Meter script
+    public Meters meter; //To reference the Meter script
 
     //Private Fields
     private Vector2 currentPosition;
@@ -147,7 +147,7 @@ public class CharacterManager : MonoBehaviour
         //To reference the Meter script
         if(meter == null)
         {
-            meter.GetComponent<Meter>(); //Getting access to fields
+            meter.GetComponent<Meters>(); //Getting access to fields
         }
 	}
 

@@ -12905,6 +12905,7 @@ GameObject:
   - component: {fileID: 1448479700}
   - component: {fileID: 1448479702}
   - component: {fileID: 1448479703}
+  - component: {fileID: 1448479710}
   - component: {fileID: 1448479704}
   - component: {fileID: 1448479707}
   - component: {fileID: 1448479709}
@@ -13041,6 +13042,7 @@ MonoBehaviour:
   HealthIcon: {fileID: 451560331}
   HealthIcon2: {fileID: 1679571144}
   HealthIcon3: {fileID: 60576205}
+  CrimsonShard: {fileID: 0}
   CharacterSprite: {fileID: 1448479700}
   anim: {fileID: 1448479702}
   topCollider: {fileID: 1448479709}
@@ -13084,6 +13086,7 @@ MonoBehaviour:
   RestartGame: LevelOne
   StartScene: StartScene
   NextLevel: DialogueTwo
+  meter: {fileID: 1448479710}
 --- !u!50 &1448479704
 Rigidbody2D:
   serializedVersion: 4
@@ -13246,6 +13249,23 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.7110615, y: 2.9510703}
   m_EdgeRadius: 0
+--- !u!114 &1448479710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1448479699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ee8e1da5638d24e9ad6e42e8ceb6ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CrimsonBar: {fileID: 0}
+  CrimsonSlider: {fileID: 0}
+  MaxCrimson: 100
+  CurrentCrimson: 0
+  CrimsonFull: 0
 --- !u!1 &1458348168
 GameObject:
   m_ObjectHideFlags: 0
@@ -13930,12 +13950,12 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f3095a13a75724f4c9d68427fc4efb11, type: 3}
-  m_Resource: {fileID: 8300000, guid: f3095a13a75724f4c9d68427fc4efb11, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2261ac46a35ab3f4189526d3e4ff5cf3, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2261ac46a35ab3f4189526d3e4ff5cf3, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

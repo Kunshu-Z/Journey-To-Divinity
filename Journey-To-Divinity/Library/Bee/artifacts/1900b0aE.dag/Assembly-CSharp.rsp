@@ -431,7 +431,7 @@
 "Assets/Scripts/Dialogue.cs"
 "Assets/Scripts/EnemyManager.cs"
 "Assets/Scripts/Goblin_Run.cs"
-"Assets/Scripts/Meter.cs"
+"Assets/Scripts/Meters.cs"
 "Assets/Scripts/StartGame.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
