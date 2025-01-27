@@ -71,7 +71,7 @@ public class CharacterManager : MonoBehaviour
     public string RestartGame;
     public string StartScene;
     public string NextLevel;
-    public Meters meter; //To reference the Meter script
+    public Meters Meter; //To reference the Meter script
 
     //Private Fields
     private Vector2 currentPosition;
@@ -145,9 +145,9 @@ public class CharacterManager : MonoBehaviour
 		RespawnBtn.gameObject.SetActive(false);
 
         //To reference the Meter script
-        if(meter == null)
+        if(Meter == null)
         {
-            meter.GetComponent<Meters>(); //Getting access to fields
+            Meter.GetComponent<Meters>(); //Getting access to fields
         }
 	}
 
@@ -285,6 +285,11 @@ public class CharacterManager : MonoBehaviour
     {
         float blockValue = (float)currentBlock / maxBlock;
         blockSlider.value = blockValue;
+    }
+
+    public void UpdateCrimson()
+    {
+
     }
 
     //Task to make objects with collision colliders function
@@ -445,14 +450,22 @@ public class CharacterManager : MonoBehaviour
 
             isAttacking = false;
 
-            if(Input.GetKeyDown("x") && meter != null)
+            if(Input.GetKeyDown("x") && Meter != null)
             {
-                anim.Play("CharacterHeal");
-                moveSpeed = 140;
+                if (Meter.CurrentCrimson > 0)
+                {
+                    anim.Play("CharacterHeal");
+                    moveSpeed = 140;
 
-                meter.CurrentCrimson -= 20; //Decreasing by 20 for testing purposes
-                meter.CurrentCrimson = Mathf.Clamp(meter.CurrentCrimson, 0, meter.MaxCrimson); //To ensure the meter does not go below 0
-                meter.UpdateCrimson(); //Update the meter
+                    Meter.CurrentCrimson -= 20; //Decreasing by 20 for testing purposes
+                    Meter.CurrentCrimson = Mathf.Clamp(Meter.CurrentCrimson, 0, Meter.MaxCrimson); //To ensure the meter does not go below 0
+                    Meter.UpdateCrimson(); //Update the meter
+                }
+
+                else 
+                {
+                    Debug.Log("You have no Crimson");
+                }
 
             }
 

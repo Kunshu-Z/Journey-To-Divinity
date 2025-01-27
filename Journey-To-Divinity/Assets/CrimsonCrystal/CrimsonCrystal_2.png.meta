@@ -202,7 +202,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CrimsonCrystal_2_0: 7791333932721169152
+      CrimsonCrystal_2_1: 3826468472432377760
+      CrimsonCrystal_2_2: 8468724286638628855
+      CrimsonCrystal_2_3: 7069755905099823042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -21,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip clip1;
     public AudioClip clip2;
+    public float CrimsonParticles;
 
     private float currentRunningTime = 0.0f;
     private bool isRunning = false;
