@@ -78,6 +78,7 @@ public class CharacterManager : MonoBehaviour
     private Vector2 cameraPosition;
     private Rigidbody2D rb2;
     private int blockBarIncrement = 10; //Increase the value of the block bar by 10
+    private int crimsonBarDecrement = 10;
     private float horizontalMovement = 0f;
     private float nextAttackingTime = 0;
     private int attackStage = 1;
@@ -111,6 +112,9 @@ public class CharacterManager : MonoBehaviour
 
         //Wait for 10 seconds before 10 to the block bar
         StartCoroutine(AddBlock());
+
+        //Wait for 10 seconds before 10 to the Crimson bar
+        StartCoroutine(DecreaseCrimson());
 
         //Pause button code
         Button Pause = PauseButton.GetComponent<Button>();
@@ -287,10 +291,20 @@ public class CharacterManager : MonoBehaviour
         blockSlider.value = blockValue;
     }
 
-    public void UpdateCrimson()
+    IEnumerator DecreaseCrimson()
     {
+        while (true)
+        {
+            yield return new WaitForSeconds(5);
 
+            if (Meter.CurrentCrimson > 0)
+            {
+                Meter.CurrentCrimson -= crimsonBarDecrement;
+                Meter.UpdateCrimson();
+            }
+        }
     }
+
 
     //Task to make objects with collision colliders function
     private void OnCollisionEnter2D(Collision2D hit)
@@ -457,7 +471,8 @@ public class CharacterManager : MonoBehaviour
                     anim.Play("CharacterHeal");
                     moveSpeed = 140;
 
-                    Meter.CurrentCrimson -= 20; //Decreasing by 20 for testing purposes
+                    DecreaseCrimson();
+                    //Meter.CurrentCrimson -= 20; //Decreasing by 20 for testing purposes
                     Meter.CurrentCrimson = Mathf.Clamp(Meter.CurrentCrimson, 0, Meter.MaxCrimson); //To ensure the meter does not go below 0
                     Meter.UpdateCrimson(); //Update the meter
                 }
