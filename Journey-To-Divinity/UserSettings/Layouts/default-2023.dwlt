@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1920
     height: 989
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Hierarchy
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -539,8 +539,8 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 418.33334}
-    m_SelectedIDs: 90aa0000
-    m_LastClickedID: 43664
+    m_SelectedIDs: 74aa0000
+    m_LastClickedID: 43636
     m_ExpandedIDs: 000000009ca900009ea90000a0a90000a2a90000a4a90000a6a90000a8a90000aaa9000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -667,23 +667,23 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
+      m_SelectedIDs: b0a50000
+      m_LastClickedID: 42416
       m_ExpandedIDs: dafaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
-        m_Name: 
-        m_OriginalName: 
+        m_Name: Character
+        m_OriginalName: Character
         m_EditFieldRect:
           serializedVersion: 2
           x: 0
           y: 0
           width: 0
           height: 0
-        m_UserData: 0
+        m_UserData: 42416
         m_IsWaitingForDelay: 0
         m_IsRenaming: 0
-        m_OriginalEventType: 11
+        m_OriginalEventType: 0
         m_IsRenamingFilename: 0
         m_TrimLeadingAndTrailingWhitespace: 0
         m_ClientGUIView: {fileID: 8}
@@ -1245,9 +1245,9 @@ MonoBehaviour:
   m_AudioPlay: 0
   m_DebugDrawModesUseInteractiveLightBakingData: 0
   m_Position:
-    m_Target: {x: -4.6420484, y: -2.7491412, z: -0.13551067}
+    m_Target: {x: -30.112358, y: -11.015136, z: 0.02209141}
     speed: 2
-    m_Value: {x: -4.6420484, y: -2.7491412, z: -0.13551067}
+    m_Value: {x: -29.878563, y: -10.916367, z: 0.029855475}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1297,9 +1297,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 15.608344
+    m_Target: 6.5274906
     speed: 2
-    m_Value: 15.608344
+    m_Value: 5.751093
   m_Ortho:
     m_Target: 1
     speed: 2

@@ -72,6 +72,7 @@ public class CharacterManager : MonoBehaviour
     public string StartScene;
     public string NextLevel;
     public Meters Meter; //To reference the Meter script
+    public Collider2D CircleCollider;
 
     //Private Fields
     private Vector2 currentPosition;
@@ -112,9 +113,6 @@ public class CharacterManager : MonoBehaviour
 
         //Wait for 10 seconds before 10 to the block bar
         StartCoroutine(AddBlock());
-
-        //Wait for 10 seconds before 10 to the Crimson bar
-        StartCoroutine(DecreaseCrimson());
 
         //Pause button code
         Button Pause = PauseButton.GetComponent<Button>();
@@ -466,8 +464,10 @@ public class CharacterManager : MonoBehaviour
 
             if(Input.GetKeyDown("x") && Meter != null)
             {
-                if (Meter.CurrentCrimson > 0)
+                if (Meter.CurrentCrimson >= 100)
                 {
+                    //Wait for 10 seconds before 10 to the Crimson bar
+                    StartCoroutine(DecreaseCrimson());
                     anim.Play("CharacterHeal");
                     moveSpeed = 140;
 
@@ -479,9 +479,15 @@ public class CharacterManager : MonoBehaviour
 
                 else 
                 {
-                    Debug.Log("You have no Crimson");
+                    Debug.Log("You have insufficient Crimson");
                 }
 
+            }
+
+            if(Meter.CurrentCrimson <= 0)
+            {
+                Debug.Log("Crimson has depleted, reverting stats...");
+                moveSpeed = 70;
             }
 
             if (!isAttacking)
@@ -513,6 +519,7 @@ public class CharacterManager : MonoBehaviour
 					Debug.Log("Character Crouching...");
 					crouch = true;
                     horizontalMovement = 0f;
+                    CircleCollider.enabled = false;
                     OnCrouching(true);
 				}
 
@@ -520,9 +527,9 @@ public class CharacterManager : MonoBehaviour
 				else if (Input.GetButtonUp("Crouch"))
 				{
 					Debug.Log("Character Standing...");
-					crouch = false;
-                    
-					OnCrouching(false);
+                    crouch = false;
+                    CircleCollider.enabled = true;
+                    OnCrouching(false);
 				}
 
                 //If the player loses all health
